@@ -7,7 +7,7 @@ return {
     -- dependencies = { "echasnovski/mini.icons" },
     opts = {},
     fzf_opts = {
-      ['--query'] = "!node_modules !.next ",
+      ['--query'] = "!node_modules !.next/ ",
     },
       
     config = function()
@@ -15,7 +15,7 @@ return {
         files = {
           -- fd_opts = "--type f --strip-cwd-prefix --hidden",
           fzf_opts = {
-            ["--query"] = "!node_modules !.next ",
+            ["--query"] = "!node_modules !.next/ ",
           },
         },
       })
