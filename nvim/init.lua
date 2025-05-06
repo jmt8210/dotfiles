@@ -21,8 +21,8 @@ vim.opt.scrolloff = 10
 vim.cmd[[autocmd BufWritePre {*.js,*.jsx,*.ts,*.tsx} Neoformat]]
 
 -- Display errors inline
-vim.diagnostic.config({virtual_text = true})
-vim.cmd[[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_flat(nil, {focus=false})]]
+vim.o.updatetime = 250
+vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
 
 -- Goto definition
 vim.keymap.set("n", "gd", vim.lsp.buf.definition, { noremap = true, silent = true })

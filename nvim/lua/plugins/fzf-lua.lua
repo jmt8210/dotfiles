@@ -13,10 +13,7 @@ return {
     config = function()
       require("fzf-lua").setup({
         files = {
-          -- fd_opts = "--type f --strip-cwd-prefix --hidden",
-          fzf_opts = {
-            fd_opts = "--type f --strip-cwd-prefix --hidden --exclude node_modules --exclude .git --exclude .next/ ",
-          },
+          fd_opts = "--type f --strip-cwd-prefix --hidden --exclude node_modules --exclude .git --exclude .next/ ",
         },
       })
       -- Keybinding to open file finder
