@@ -57,7 +57,7 @@ return {
       local on_attach = function(_, bufnr)
         vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = bufnr })
         vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { buffer = bufnr, desc = "Code Action" })
-        vim.keymap.set("n", "<leader>ai", "<cmd>TSToolsAddMissingImports<CR>", { buffer = bufnr, desc = "Add Missing Imports" })
+        vim.keymap.set("n", "<leader>ii", "<cmd>TSToolsAddMissingImports<CR>", { buffer = bufnr, desc = "Add Missing Imports" })
       end
 
       -- ESLint (optional)

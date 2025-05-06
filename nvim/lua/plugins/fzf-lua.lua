@@ -15,7 +15,7 @@ return {
         files = {
           -- fd_opts = "--type f --strip-cwd-prefix --hidden",
           fzf_opts = {
-            ["--query"] = "!node_modules !.next/ ",
+            fd_opts = "--type f --strip-cwd-prefix --hidden --exclude node_modules --exclude .git --exclude .next/ ",
           },
         },
       })
@@ -26,7 +26,7 @@ return {
       
       -- Keybinding to open grep finder
       vim.keymap.set("n", "<leader>fg", function()
-        require("fzf-lua").grep()
+        require("fzf-lua").live_grep()
       end, { desc = "FZF: Grep Files" })
     end,
   }
