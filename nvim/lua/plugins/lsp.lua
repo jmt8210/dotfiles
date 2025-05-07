@@ -50,6 +50,7 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     config = function()
       local lspconfig = require("lspconfig")
+      lspconfig.gopls.setup{}
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
       require("tailwind-tools").setup({})
 
