@@ -50,7 +50,6 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     config = function()
       local lspconfig = require("lspconfig")
-      lspconfig.gopls.setup{}
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
       require("tailwind-tools").setup({})
 
@@ -58,7 +57,7 @@ return {
       local on_attach = function(_, bufnr)
         vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = bufnr })
         vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { buffer = bufnr, desc = "Code Action" })
-        vim.keymap.set("n", "<leader>ii", "<cmd>TSToolsAddMissingImports<CR>", { buffer = bufnr, desc = "Add Missing Imports" })
+        vim.keymap.set("n", "<leader>ai", "<cmd>TSToolsAddMissingImports<CR>", { buffer = bufnr, desc = "Add Missing Imports" })
       end
 
       -- ESLint (optional)
@@ -66,6 +65,7 @@ return {
         on_attach = on_attach,
         capabilities = capabilities,
       })
+      lspconfig.gopls.setup({})
     end,
   }
 }
