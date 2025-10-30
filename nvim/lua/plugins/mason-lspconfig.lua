@@ -2,13 +2,14 @@ return {
 	"mason-org/mason-lspconfig.nvim",
 	opts = {
 		ensure_installed = {
-			"lua_ls",
-			"rust_analyzer",
 			"eslint",
+			"lua_ls",
+			"pyright",
+			"pylsp",
+			"rust_analyzer",
 			"tailwindcss",
 			"ts_ls",
-			"eslint",
-			-- eslint_d and prettierd are also used, but aren't valid in this list, install afterwards using :MasonInstall eslint_d prettierd
+			-- Some tools are also used, but aren't valid in this list, install afterwards using :MasonInstall eslint_d prettierd
 		},
 	},
 	dependencies = {
