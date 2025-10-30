@@ -5,13 +5,17 @@ return {
 	},
 	event = "VeryLazy", -- or "BufReadPre" to load earlier
 	config = function()
+		local gitsigns_handler = function()
+			-- Defer the execution to avoid modifying window while bufdelete is running
+			vim.schedule(require("satellite.handlers.gitsigns").refresh)
+		end
 		require("satellite").setup({
 			-- width = 2, -- Wider scrollbar
 			winblend = 0,
 			handlers = {
 				search = { enable = true },
 				diagnostic = { enable = true },
-				gitsigns = { enable = true },
+				gitsigns = { enable = true, handler = gitsigns_handler },
 				cursor = { enable = true },
 			},
 		})

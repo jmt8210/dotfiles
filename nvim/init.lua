@@ -1,4 +1,5 @@
 require("config.lazy")
+require("patch")
 
 -- Set hybrid line numbers (relative and show current line number)
 vim.wo.number = true
@@ -28,13 +29,6 @@ vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "FocusGai
 
 -- Prevent shift for signcolumn
 vim.opt.signcolumn = "yes"
-
-vim.api.nvim_create_autocmd("BufWritePre", {
-	pattern = "*",
-	callback = function(args)
-		require("conform").format({ bufnr = args.buf })
-	end,
-})
 
 -- Display errors in float
 vim.o.updatetime = 250
@@ -104,4 +98,26 @@ vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
 			end
 		end
 	end,
+})
+
+-- Fix "Undefined global `vim`" error
+vim.lsp.config("lua_ls", {
+	settings = {
+		Lua = {
+			diagnostics = {
+				globals = { "vim" },
+			},
+		},
+	},
+})
+
+vim.api.nvim_create_user_command("DisableFormatting", function()
+	vim.g.disable_autoformat = true
+end, {
+	desc = "Disable autoformat-on-save",
+})
+vim.api.nvim_create_user_command("EnableFormatting", function()
+	vim.g.disable_autoformat = false
+end, {
+	desc = "Re-enable autoformat-on-save",
 })
